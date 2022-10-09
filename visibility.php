@@ -1,12 +1,12 @@
 <?php
 
-// pada tahap ini semua fungsionalitas dari setiap lebih terlihat jelas
-// class produk fokus kepada property yang general
-// class child seperti kopi dan rokok berfokus kepada spesifikasi masing-masing class.
-
 class Produk
 {
-    public $nama, $penjual, $pembeli, $harga;
+    public $nama, $penjual, $pembeli; 
+    
+    private $harga; 
+    
+    protected $diskon = 234;
 
     public function getLabel()
     {
@@ -25,9 +25,12 @@ class Produk
         $str = "{$this->nama} | Penjual dan Pembeli : {$this->getLabel()} Rp. {$this->harga}";
         return $str;
     }
+
+    public function getHarga(){
+        return $this->harga - ( $this->harga * $this->diskon / 100 );
+    }
+
 }
-$produk2 = new rokok("Sampoerna", "Alhasy", "Anisa", 30500, 12, 0);
-$produk3 = new kopi("Kopi Susu", "Fajar", "Taufik", 20000, 0, 20);
 
 class rokok extends Produk{
     public $jmlhbtg;
@@ -58,6 +61,11 @@ class kopi extends Produk{
         $str = "Nama Kopi : ".parent::getInfo()." {$this->jmngopi} | Jam Ngopi.";
         return $str;
     }
+
+    public function setDiskon($diskon){
+        return $this->diskon = $diskon;
+    }
+
 }
 
 class CetakInfoProduk
@@ -68,8 +76,16 @@ class CetakInfoProduk
         return $str;
     }
 }
+
+$produk2 = new rokok("Sampoerna", "Alhasy", "Anisa", 30500, 12, 0);
+$produk3 = new kopi("Kopi Susu", "Fajar", "Taufik", 20000, 0, 20);
+
 $infoProduk = new CetakInfoProduk();
 
 echo $produk2->getInfo();
 echo "<br>";
 echo $produk3->getInfo();
+echo "<hr>";
+
+$produk3->setDiskon(50);
+echo $produk3->getHarga();

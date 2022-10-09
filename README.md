@@ -23,3 +23,8 @@ Apel, Mangga, Jeruk adalah sebuah Objek.
 
 warna dan bentuk dari setiap buah buahan di namakan property
 lalu perilaku dari buah tersebut namanya method. contoh: apel dapat dimakan, memiliki rasa yang manis, dsb.
+
+# Visibility
+1. public, dapat digunakan dimana saja, bahkan di luar class
+2. protected, hanya dapat digunakan di dalam sebuah class beserta turunannya.
+3. private, hanya dapat digunakan di dalam sebuah kelas tertentu saja.
